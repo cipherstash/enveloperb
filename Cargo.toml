@@ -4,7 +4,7 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-enveloper = { git = "ssh://git@github.com/cipherstash/enveloper", branch = "main" }
+enveloper = { git = "https://github.com/cipherstash/enveloper", branch = "main" }
 lazy_static = "^0.2.2"
 rutie = "0.8.4"
 tokio = { version = "^1.17.0", features = [ "rt-multi-thread" ] }
