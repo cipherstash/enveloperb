@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 enveloper = { git = "https://github.com/cipherstash/enveloper", branch = "main" }
 lazy_static = "^0.2.2"
-rutie = "0.8.4"
+rutie = { version = "0.8.4", features = ["no-link"] }
 tokio = { version = "^1.17.0", features = [ "rt-multi-thread" ] }
 aws-config = "0.10.1"
 aws-sdk-kms = "0.10.1"
