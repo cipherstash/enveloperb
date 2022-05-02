@@ -89,14 +89,14 @@ task :guard do
 	sh "guard --clear"
 end
 
-namespace :rust do
-  desc "Build Rust library"
-  task :build do
-    sh "cargo build --release"
+desc "Build Rust library"
+task :compile do
+  chdir "ext" do
+    sh "rake"
   end
 end
 
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new :test => "rust:build" do |t|
+RSpec::Core::RakeTask.new :test => :compile do |t|
 	t.pattern = "spec/**/*_spec.rb"
 end
