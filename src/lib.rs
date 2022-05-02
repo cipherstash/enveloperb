@@ -173,8 +173,8 @@ methods!(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "C" fn Init_enveloperb() {
-    Module::from_existing("Enveloperb").define(|envmod| {
+pub extern "C" fn Init_libenveloperb() {
+    Module::new("Enveloperb").define(|envmod| {
         envmod.define_nested_class("Simple", None).define(|klass| {
             klass.singleton_class().def_private("_new", enveloperb_simple_new);
             klass.def_private("_encrypt", enveloperb_simple_encrypt);
