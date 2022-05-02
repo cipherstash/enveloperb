@@ -1,6 +1,12 @@
 task :build do
-  sh "cargo build --release"
-  mv "../target/release/libenveloperb.#{RbConfig::CONFIG["SOEXT"]}", "../lib"
+  extra_flags = if RbConfig::CONFIG["SOEXT"] == "dylib"
+                  ["--", "-C", "link-args=-flat_namespace -undefined suppress"]
+                else
+                  []
+                end
+
+  sh *(["cargo", "rustc", "--release"] + extra_flags)
+  mv "../target/release/libenveloperb.#{RbConfig::CONFIG["SOEXT"]}", "../lib" rescue nil
 end
 
 task default: :build
