@@ -56,7 +56,7 @@ namespace :gem do
                     []
                   end
 
-    sh *(["cargo", "build", "--release", "--target-dir", "#{stage_dir}/target"] + extra_flags)
+    sh *(["cargo", "rustc", "--release", "--target-dir", "#{stage_dir}/target"] + extra_flags)
     mv "#{stage_dir}/target/release/#{soname}", "#{stage_dir}/#{sodir}/#{soname}"
   end
   task :native => "#{stage_dir}/#{sodir}/#{soname}"
