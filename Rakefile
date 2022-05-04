@@ -30,7 +30,7 @@ namespace :gem do
   desc "Push all freshly-built gems to RubyGems"
   task :push do
     Rake::Task.tasks.select { |t| t.name =~ %r{^pkg/#{spec.name}-.*\.gem} && t.already_invoked }.each do |pkgtask|
-      sh "echo", "gem", "push", pkgtask.name
+      sh "gem", "push", pkgtask.name
     end
 
     Rake::Task.tasks
@@ -38,7 +38,7 @@ namespace :gem do
       .select(&:already_invoked)
       .each do |task|
       platform = task.name.split(":").last
-      sh "echo", "gem", "push", "pkg/#{spec.full_name}-#{platform}.gem"
+      sh "gem", "push", "pkg/#{spec.full_name}-#{platform}.gem"
     end
    end
 
