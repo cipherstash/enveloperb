@@ -3,7 +3,7 @@ end
 
 begin
   RUBY_VERSION =~ /(\d+\.\d+)/
-  require_relative "./#{RUBY_VERSION}/enveloperb"
+  require_relative "./#{$1}/enveloperb"
 rescue LoadError
   begin
     require_relative "./enveloperb.#{RbConfig::CONFIG["DLEXT"]}"
