@@ -6,12 +6,12 @@ edition = "2021"
 [dependencies]
 enveloper = { git = "https://github.com/cipherstash/enveloper", branch = "main" }
 lazy_static = "^0.2.2"
-rutie = { version = "0.8.4", features = ["no-link"] }
+rb-sys = "0.8.0"
+rutie = { git = "https://github.com/mpalmer/rutie", branch = "rb_sys" }
 tokio = { version = "^1.17.0", features = [ "rt-multi-thread" ] }
 aws-config = "0.10.1"
 aws-sdk-kms = "0.10.1"
 aws-types = { version = "0.10.1", features = [ "hardcoded-credentials" ] }
 
 [lib]
-name = "enveloperb"
 crate-type = ["cdylib"]
