@@ -541,9 +541,24 @@ dependencies = [
 ]
 
 [[package]]
-name = "enveloper"
-version = "0.1.0"
-source = "git+https://github.com/cipherstash/enveloper?branch=main#2b91536959b98a77ec88a75c758ce77f297514db"
+name = "enveloperb"
+version = "0.0.0"
+dependencies = [
+ "aws-config",
+ "aws-sdk-kms",
+ "aws-types",
+ "envelopers",
+ "lazy_static 0.2.11",
+ "rb-sys",
+ "rutie",
+ "tokio",
+]
+
+[[package]]
+name = "envelopers"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e015ae6b5a2ce41dc75155fd8e200d33a07d6627c6969c5e60e1e5ade18ed34"
 dependencies = [
  "aes-gcm",
  "async-trait",
@@ -553,20 +568,6 @@ dependencies = [
  "serde",
  "serde_cbor",
  "thiserror",
-]
-
-[[package]]
-name = "enveloperb"
-version = "0.0.0"
-dependencies = [
- "aws-config",
- "aws-sdk-kms",
- "aws-types",
- "enveloper",
- "lazy_static 0.2.11",
- "rb-sys",
- "rutie",
- "tokio",
 ]
 
 [[package]]
