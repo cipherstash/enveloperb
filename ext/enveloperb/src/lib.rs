@@ -10,7 +10,7 @@ extern crate lazy_static;
 use aws_config;
 use aws_sdk_kms;
 use aws_types;
-use enveloper::{EncryptedRecord, EnvelopeCipher, KMSKeyProvider, SimpleKeyProvider};
+use envelopers::{EncryptedRecord, EnvelopeCipher, KMSKeyProvider, SimpleKeyProvider};
 use std::borrow::Cow;
 use tokio::runtime::Runtime;
 use rutie::{Class, Encoding, Hash, Module, Object, RString, Symbol, VerifiedObject, VM};

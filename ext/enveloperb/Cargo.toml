@@ -4,7 +4,7 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-enveloper = { git = "https://github.com/cipherstash/enveloper", branch = "main" }
+envelopers = "^0.1.2"
 lazy_static = "^0.2.2"
 rb-sys = "0.8.0"
 rutie = { git = "https://github.com/mpalmer/rutie", branch = "rb_sys" }
