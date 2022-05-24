@@ -16,13 +16,21 @@ Gem::Specification.new do |s|
 
   s.authors  = ["Matt Palmer"]
   s.email    = ["matt@cipherstash.com"]
-  s.homepage = "https://github.com/cipherstash/enveloperb"
+  s.homepage = "https://cipherstash.com"
 
   s.files = `git ls-files -z`.split("\0").reject { |f| f =~ /^(\.|G|spec|Rakefile)/ }
 
   s.extensions = ["ext/enveloperb/extconf.rb"]
 
   s.required_ruby_version = ">= 2.7.0"
+
+  s.metadata["homepage_uri"] = s.homepage
+  s.metadata["source_code_uri"] = "https://github.com/cipherstash/enveloperb"
+  s.metadata["changelog_uri"] = "https://github.com/cipherstash/enveloperb/releases"
+  s.metadata["bug_tracker_uri"] = "https://github.com/cipherstash/enveloperb/issues"
+  s.metadata["documentation_uri"] = "https://rubydoc.info/gems/enveloperb"
+  s.metadata["mailing_list_uri"] = "https://discuss.cipherstash.com"
+  s.metadata["funding_uri"] = "https://cipherstash.com/signup"
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'github-release'
