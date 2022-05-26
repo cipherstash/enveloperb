@@ -1,8 +1,6 @@
 module Enveloperb
   # An Enveloperb cryptography engine using an unprotected string as the wrapping key.
   #
-  # @note this class is not intended for general-purpose use.
-  #
   class Simple
     def self.new(k)
       unless k.is_a?(String) && k.encoding == Encoding::BINARY
