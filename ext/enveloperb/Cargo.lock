@@ -568,7 +568,8 @@ dependencies = [
 [[package]]
 name = "envelopers"
 version = "0.3.0"
-source = "git+https://github.com/cipherstash/envelopers.git#7bf15d2e417ef23975042c0e6f863b85693024e3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f61714237566bf60718166f12f0c3da4646a5dd0dd9b9ca6f20948e38aabc391"
 dependencies = [
  "aes-gcm",
  "async-trait",
