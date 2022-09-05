@@ -10,7 +10,7 @@ extern crate lazy_static;
 use aws_config;
 use aws_sdk_kms;
 use aws_types;
-use envelopers::{CacheOptions, EncryptedRecord, EnvelopeCipher, KMSKeyProvider, SimpleKeyProvider};
+use envelopers::{CacheOptions, EncryptedRecord, EnvelopeCipher, KMSKeyProvider, SimpleKeyProvider, CachingKeyWrapper};
 use std::borrow::Cow;
 use tokio::runtime::Runtime;
 use rutie::{Class, Encoding, Hash, Module, Object, RString, Symbol, VerifiedObject, VM};
@@ -32,12 +32,12 @@ impl VerifiedObject for EnveloperbEncryptedRecord {
 }
 
 pub struct SimpleCipher {
-    cipher: EnvelopeCipher<SimpleKeyProvider>,
+    cipher: EnvelopeCipher<CachingKeyWrapper<SimpleKeyProvider>>,
     runtime: Runtime,
 }
 
 pub struct AWSKMSCipher {
-    cipher: EnvelopeCipher<KMSKeyProvider>,
+    cipher: EnvelopeCipher<CachingKeyWrapper<KMSKeyProvider>>,
     runtime: Runtime,
 }
 
@@ -55,7 +55,7 @@ methods!(
         key.clone_from_slice(rbkey.unwrap().to_bytes_unchecked());
 
         let provider = SimpleKeyProvider::init(key);
-        let cipher = EnvelopeCipher::init(provider, CacheOptions::default());
+        let cipher = EnvelopeCipher::init(CachingKeyWrapper::new(provider, CacheOptions::default()));
 
         let klass = Module::from_existing("Enveloperb").get_nested_class("Simple");
         return klass.wrap_data(SimpleCipher{ cipher: cipher, runtime: Runtime::new().unwrap() }, &*SIMPLE_CIPHER_WRAPPER);
@@ -121,7 +121,7 @@ methods!(
 
         let kmsclient = aws_sdk_kms::Client::new(&kmsclient_config);
         let provider = KMSKeyProvider::new(kmsclient, rbkey.unwrap().to_string());
-        let cipher = EnvelopeCipher::init(provider, CacheOptions::default().with_max_bytes(100_000));
+        let cipher = EnvelopeCipher::init(CachingKeyWrapper::new(provider, CacheOptions::default().with_max_bytes(100_000)));
 
         let klass = Module::from_existing("Enveloperb").get_nested_class("AWSKMS");
         return klass.wrap_data(AWSKMSCipher{ cipher: cipher, runtime: rt }, &*AWSKMS_CIPHER_WRAPPER);
