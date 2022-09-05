@@ -567,12 +567,13 @@ dependencies = [
 
 [[package]]
 name = "envelopers"
-version = "0.3.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f61714237566bf60718166f12f0c3da4646a5dd0dd9b9ca6f20948e38aabc391"
+checksum = "7c3cc2fe803e7f222ba13524bad71c8f99fb4147fec2d088010fa40ffd5c4914"
 dependencies = [
  "aes-gcm",
  "async-trait",
+ "aws-config",
  "aws-sdk-kms",
  "lru",
  "rand",
