@@ -4,7 +4,7 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-envelopers = "0.5"
+envelopers = { version = "0.5.1", features = [ "tokio" ] }
 lazy_static = "^0.2.2"
 rb-sys = "0.8.0"
 rutie = { git = "https://github.com/mpalmer/rutie", branch = "rb_sys" }
