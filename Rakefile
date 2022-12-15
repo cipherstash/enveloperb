@@ -13,6 +13,7 @@ end
 spec = Bundler.load_gemspec("enveloperb.gemspec")
 
 require "rubygems/package_task"
+require 'git-version-bump/rake-tasks'
 
 Gem::PackageTask.new(spec) do |pkg|
 end
