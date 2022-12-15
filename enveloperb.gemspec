@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
 
   s.files = `git ls-files -z`.split("\0").reject { |f| f =~ /^(\.|G|spec|Rakefile)/ }
 
+  s.license = "LicenseRef-LICENSE"
+
   s.extensions = ["ext/enveloperb/extconf.rb"]
 
   s.required_ruby_version = ">= 2.7.0"
